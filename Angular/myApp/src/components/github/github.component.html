@@ -1,0 +1,18 @@
+<div>
+    <input [(ngModel)]="SearchName" type="search" placeholder="Give user name"/>
+    <input (click)="onGetUserHandler()" type="button" value="Search"/>
+</div>
+
+<div *ngIf="ErrorMessage">
+    <h4>{{ErrorMessage}}</h4>
+</div>
+<div *ngIf="ShowLoadingSpinner">
+    <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+</div>
+
+<div *ngIf="User">
+    <h1>{{User.login}}</h1>
+    <h3>Repos Number : {{User.public_repos}} </h3><!--Rating Component Here-->
+    <br/>
+    <img [src]="User.avatar_url"/>
+</div>

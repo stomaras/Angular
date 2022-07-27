@@ -1,0 +1,37 @@
+
+
+<div>
+    <input list="list" type="search" placeholder="Search Category"/>
+    <datalist id="list">
+        <option *ngFor="let category of DistinctCategory">{{category}}</option>
+    </datalist>
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Category</th>
+                <th>Laureates</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prize of Prizes">
+                <th>{{prize.year}}</th>
+                <th>{{prize.category}}</th>
+                <th>
+                    <ul *ngIf="prize.laureates && prize.laureates.length; else PrizeMotivation">
+                        <li *ngFor="let laurate of prize.laureates">{{laurate.firstname + " " + (laurate.surname? laurate.surname : "")}}</li>
+                        
+                    </ul>
+                    <ng-template #PrizeMotivation>
+                        <ul>
+                            <li>{{prize.overallMotivation}}</li>
+                        </ul>
+                    </ng-template>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>
